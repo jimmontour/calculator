@@ -5,6 +5,8 @@ let secondValue = '';
 let displayValue2 = '';
 let displayScreen = '';
 let opperator = '';
+let displaySum = ''
+const multipleOpperators = false;
 
 // Number Selectors
 const btn0 = document.getElementById('button0');
@@ -30,80 +32,82 @@ const btnEquals = document.getElementById('button-equals');
 
 // Display Selector
 let display = document.getElementById('display-content');
+let sum = document.getElementById('sum-content')
 
 // Number event listeners
 btn0.addEventListener('click', (e) => {
     displayValue += '0';
-    console.log(displayValue);
     document.getElementById('display-content').innerHTML = displayValue;
 })
 
 btn1.addEventListener('click', (e) => {
     displayValue += '1';
-    console.log(displayValue);
     document.getElementById('display-content').innerHTML = displayValue;
 })
 
 btn2.addEventListener('click', (e) => {
-    displayValue += '2';
-    console.log(displayValue);
+    displayValue += '2';;
     document.getElementById('display-content').innerHTML = displayValue;
 })
 
 btn3.addEventListener('click', (e) => {
     displayValue += '3';
-    console.log(displayValue);
     document.getElementById('display-content').innerHTML = displayValue;
 })
 
 btn4.addEventListener('click', (e) => {
     displayValue += '4';
-    console.log(displayValue);
     document.getElementById('display-content').innerHTML = displayValue;
 })
 
 btn5.addEventListener('click', (e) => {
     displayValue += '5';
-    console.log(displayValue);
     document.getElementById('display-content').innerHTML = displayValue;
 })
 
 btn6.addEventListener('click', (e) => {
     displayValue += '6';
-    console.log(displayValue);
     document.getElementById('display-content').innerHTML = displayValue;
 })
 
 btn7.addEventListener('click', (e) => {
     displayValue += '7';
-    console.log(displayValue);
     document.getElementById('display-content').innerHTML = displayValue;
 })
 
 btn8.addEventListener('click', (e) => {
     displayValue += '8';
-    console.log(displayValue);
     document.getElementById('display-content').innerHTML = displayValue;
 })
 
 btn9.addEventListener('click', (e) => {
     displayValue += '9';
-    console.log(displayValue);
     document.getElementById('display-content').innerHTML = displayValue;
 })
 
 btnPoint.addEventListener('click', (e) => {
     displayValue += '.';
-    console.log(displayValue);
     document.getElementById('display-content').innerHTML = displayValue;
 })
 
 // Opperator event listeners
 // Addition opperator
 btnAdd.addEventListener('click', (e) => {
+    if (opperator !== '') {
+        console.log('operator set')
+        opperator = '+';
+        firstValue = parseFloat(displaySum);
+        SecondValue= parseFloat(displayValue);
+        displayValue = opperate(firstValue, secondValue, opperator);
+        document.getElementById('sum-content').innerHTML = displayValue; 
+    } else {
+        console.log('operator not set')
     firstValue = parseFloat(displayValue);
+    document.getElementById('sum-content').innerHTML = firstValue; 
     displayValue = '';
     opperator = '+';
+    document.getElementById('display-content').innerHTML = displayValue;
+    }
 });
 
 btnSubtract.addEventListener('click', (e) => {
@@ -119,6 +123,7 @@ btnMultiply.addEventListener('click', (e) => {
 });
 
 btnDivide.addEventListener('click', (e) => {
+
     firstValue = parseFloat(displayValue);
     displayValue = '';
     opperator = '/';
@@ -135,6 +140,8 @@ btnEquals.addEventListener('click', (e) => {
     secondValue= parseFloat(displayValue);
     displayValue = opperate(firstValue, secondValue, opperator);
     document.getElementById('display-content').innerHTML = displayValue;  
+    document.getElementById('sum-content').innerHTML = displayValue;
+
 })
 
 // Reset
